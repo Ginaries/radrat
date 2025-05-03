@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ao0imps8ibc"]
+
+[ext_resource type="Texture2D" uid="uid://2yx7g5jf3dcc" path="res://Assets/Menu/Muchas Gracias.png" id="1_imlvd"]
+[ext_resource type="Script" path="res://Script/creditos.gd" id="1_nwrg8"]
+
+[node name="Creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nwrg8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(956, 537)
+texture = ExtResource("1_imlvd")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1380.0
+offset_top = 744.0
+offset_right = 1527.0
+offset_bottom = 821.0
+theme_override_font_sizes/font_size = 50
+text = "Menu"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1398.0
+offset_top = 840.0
+offset_right = 1512.0
+offset_bottom = 917.0
+theme_override_font_sizes/font_size = 50
+text = "Salir
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

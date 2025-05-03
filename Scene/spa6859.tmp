@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8dxvjn8dyfve"]
+
+[ext_resource type="Script" path="res://Script/SpawnBall.gd" id="1_vjvwy"]
+[ext_resource type="PackedScene" uid="uid://cpc0t14bcu7bw" path="res://Scene/bola.tscn" id="2_xapcr"]
+
+[node name="SpawnBall" type="Node2D"]
+position = Vector2(1428, 479)
+script = ExtResource("1_vjvwy")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="bola" parent="." instance=ExtResource("2_xapcr")]
+position = Vector2(3, 2)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

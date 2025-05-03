@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://rfi0fnvu8br4"]
+
+[ext_resource type="Texture2D" uid="uid://qyk831dklnuf" path="res://Assets/objetos/Botella radiactiva.png" id="1_uya7l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_clkmk"]
+radius = 15.0
+height = 46.0
+
+[node name="Mejora Velocidad" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uya7l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 8)
+shape = SubResource("CapsuleShape2D_clkmk")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx7tiode08hmm"]
+
+[ext_resource type="Texture2D" uid="uid://bilrfeigy6atm" path="res://Assets/objetos/botella de agua0.png" id="1_r7qn7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkvvb"]
+radius = 28.0
+height = 96.0
+
+[node name="Agua" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r7qn7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hkvvb")

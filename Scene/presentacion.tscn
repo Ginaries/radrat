@@ -1,0 +1,157 @@
+[gd_scene load_steps=12 format=3 uid="uid://cas3ban3mlelp"]
+
+[ext_resource type="Script" path="res://Script/Presentacion.gd" id="1_0p21i"]
+[ext_resource type="Texture2D" uid="uid://dx4t6t54x6ccb" path="res://Assets/presentacion/viñeta 1.png" id="2_li0n3"]
+[ext_resource type="Texture2D" uid="uid://cxequqxsbro0c" path="res://Assets/presentacion/viñeta 4.png" id="2_sepuv"]
+[ext_resource type="Texture2D" uid="uid://f6lj3iirllij" path="res://Assets/presentacion/viñeta 2.png" id="2_tsji3"]
+[ext_resource type="Texture2D" uid="uid://c7ntxv1xbup0o" path="res://Assets/objetos/flecha_tecla.png" id="3_je7t3"]
+[ext_resource type="Texture2D" uid="uid://cpr74ofm0ph7c" path="res://Assets/presentacion/viñeta 3.png" id="3_toyt6"]
+
+[sub_resource type="Animation" id="Animation_mwnjq"]
+resource_name = "Crechendo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("primer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hxo4j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("primer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cuarto:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j3tmr"]
+resource_name = "decrechendo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cuarto:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_04gnt"]
+resource_name = "set_texto"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8xh3c"]
+_data = {
+"Crechendo": SubResource("Animation_mwnjq"),
+"RESET": SubResource("Animation_hxo4j"),
+"decrechendo": SubResource("Animation_j3tmr"),
+"set_texto": SubResource("Animation_04gnt")
+}
+
+[node name="Presentacion" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0p21i")
+
+[node name="cuarto" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(981, 419)
+scale = Vector2(1.764, 1.374)
+texture = ExtResource("2_sepuv")
+
+[node name="tercero" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(944, 493)
+scale = Vector2(2.174, 2.032)
+texture = ExtResource("3_toyt6")
+
+[node name="segunda" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(976, 553)
+scale = Vector2(0.793666, 0.681702)
+texture = ExtResource("2_tsji3")
+
+[node name="primer" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(976, 553)
+scale = Vector2(0.762796, 0.705374)
+texture = ExtResource("2_li0n3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8xh3c")
+}
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 716.0
+offset_right = 1873.0
+offset_bottom = 1009.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Boton" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1802, 959)
+rotation = 1.5708
+scale = Vector2(0.381219, 0.364514)
+texture = ExtResource("3_je7t3")

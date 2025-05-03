@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://38j6r6humnh4"]
+
+[ext_resource type="Script" path="res://Script/menu.gd" id="1_3uqb6"]
+[ext_resource type="Texture2D" uid="uid://b4s8hkrk1owv8" path="res://Assets/Menu/RAD-RAT.png" id="1_dpw32"]
+[ext_resource type="Texture2D" uid="uid://3jrqqavokfbr" path="res://Assets/Menu/RAD-RAT 1.png" id="2_6esg7"]
+[ext_resource type="Texture2D" uid="uid://dukar4mthsovv" path="res://Assets/Menu/RAD-RAT 2.png" id="3_dy12k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shcvs"]
+animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("1_dpw32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_dpw32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_dpw32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6esg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dy12k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_dpw32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_dpw32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="Animation" id="Animation_s6mih"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ljfd6"]
+resource_name = "cambio de escena"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gawyp"]
+_data = {
+"RESET": SubResource("Animation_s6mih"),
+"cambio de escena": SubResource("Animation_ljfd6")
+}
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3uqb6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(953, 670)
+scale = Vector2(1.22553, 0.87364)
+sprite_frames = SubResource("SpriteFrames_shcvs")
+autoplay = "default"
+frame_progress = 0.920583
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(0.94902, 0.94902, 0.94902, 1)
+layout_mode = 0
+offset_left = 1244.0
+offset_top = 566.0
+offset_right = 1475.0
+offset_bottom = 642.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="Button2" type="Button" parent="."]
+self_modulate = Color(0.94902, 0.94902, 0.94902, 1)
+layout_mode = 0
+offset_left = 1244.0
+offset_top = 659.0
+offset_right = 1475.0
+offset_bottom = 735.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasModulate")
+libraries = {
+"": SubResource("AnimationLibrary_gawyp")
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

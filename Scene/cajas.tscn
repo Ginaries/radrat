@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8nok7m23jyyq"]
+
+[ext_resource type="Script" path="res://Script/cajas.gd" id="1_apr7i"]
+[ext_resource type="Texture2D" uid="uid://b6nmbx600vmi6" path="res://Assets/objetos/caja.png" id="1_te2i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8b3cm"]
+size = Vector2(50, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tchys"]
+size = Vector2(22.5, 44)
+
+[node name="cajas" type="CharacterBody2D"]
+script = ExtResource("1_apr7i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_8b3cm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, -28)
+texture = ExtResource("1_te2i3")
+
+[node name="izquierda" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="izquierda"]
+position = Vector2(-19.75, 0)
+shape = SubResource("RectangleShape2D_tchys")
+
+[node name="derecha" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="derecha"]
+position = Vector2(18, -1)
+shape = SubResource("RectangleShape2D_tchys")
+
+[connection signal="body_entered" from="izquierda" to="." method="_on_izquierda_body_entered"]
+[connection signal="body_exited" from="izquierda" to="." method="_on_izquierda_body_exited"]
+[connection signal="body_entered" from="derecha" to="." method="_on_derecha_body_entered"]
+[connection signal="body_exited" from="derecha" to="." method="_on_derecha_body_exited"]

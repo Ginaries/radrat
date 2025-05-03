@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr5y3fvt5gftb"]
+
+[ext_resource type="Texture2D" uid="uid://c7ntxv1xbup0o" path="res://Assets/objetos/flecha_tecla.png" id="1_vo7hy"]
+
+[sub_resource type="Animation" id="Animation_vxi1j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3o6y5"]
+resource_name = "set_text"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xiiwi"]
+_data = {
+"RESET": SubResource("Animation_vxi1j"),
+"set_text": SubResource("Animation_3o6y5")
+}
+
+[node name="Dialogos" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 100.0
+offset_top = 867.0
+offset_right = 1825.0
+offset_bottom = 1035.0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = 81.0
+offset_top = 841.0
+offset_right = 1841.0
+offset_bottom = 1058.0
+border_color = Color(0.811765, 0.992157, 0.807843, 1)
+border_width = 4.6
+editor_only = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 145.0
+offset_top = 880.0
+offset_right = 1726.0
+offset_bottom = 1026.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "hola pendejo"
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1773.57, 1002.85)
+rotation = 1.5708
+scale = Vector2(0.226988, 0.248462)
+texture = ExtResource("1_vo7hy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xiiwi")
+}
